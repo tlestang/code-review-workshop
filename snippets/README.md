@@ -20,6 +20,13 @@ List of discrete practices to illustrate in snippets:
 - [ ] Duplicated code (**R**, **D**)
 - [ ] You ain't Gonna Need It (YAGNI) over-engineering (**D**, **P**)
 - [ ] Implementing what would be provided by a library (**R**, **P**)
+- [ ] Routine with weak cohesion (**D**, **R**)
+  - For instance routine that does multiple operations, each operating
+    on different data.
+- [ ] Routines with unacceptable coupling
+  - For instance global data coupling or control coupling
+- [ ] Variables declared and initialized for from use
+  
 
 # Snippets
 ## `apply_vaccine.R`
