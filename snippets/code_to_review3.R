@@ -29,11 +29,11 @@ processed_volcano$primary_volcano_type <- processed_volcano$primary_volcano_type
 sc_max <- max(processed_volcano$pop)
 sc_min <- min(processed_volcano$pop)
 
-col_palette <- c("#d11141", "#00b159", "#00aedb", "#f37735", "#ffc425",
+col_palette = c("#d11141", "#00b159", "#00aedb", "#f37735", "#ffc425",
                  "#3aefaf", "#0b57dd", "#f666b7", "#cf1833", "#a35c0a",
                  "#bc0bfe", "#61ff41", "#eabf72", "#09dbc3", "#ffffff")
 
-do_map <- function(vulc_type, colid = NULL) {
+do_map = function(vulc_type, colid = NULL) {
   dotcol <- ifelse(is.null(colid), "#fdff00", col_palette[colid])
   processed_volcano %>%
     filter(primary_volcano_type == vulc_type) %>%

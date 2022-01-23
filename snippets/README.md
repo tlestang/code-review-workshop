@@ -69,3 +69,46 @@ List of discrete practices to illustrate in snippets:
 - code is rather well formatted and steps of calculation are clear
 - Good error checking
 - Some variable could use more descriptive names (e.g. `doo`)
+
+
+## `code_to_review1.py`
+
+- undocumented, or not properly documented functions
+- lack of descriptiod of expected input / output, returns
+- non-significant naming of the functions
+- unused functions
+- commented out code
+- messed up local and global variables
+- (+) comments in critical places of the code
+- (+) assertion checks for types of critical variables
+- testing not in `if __name__` block (or a separate scirpt)
+- (+) test cases included
+- function imports all over the place
+
+## `code_to_review2.py`
+
+- (+) logical use of the object orented structure
+- testing not in `if __name__` block (or a separate scirpt)
+- (+) test cases included
+- function imports all over the place
+- types of variables / methods included
+- is making `Analysis` class abstract the best choice? Now programmer
+needs to create a separate class for every analysis, maybe better
+to keep them as objects and define generic method?
+- tests not comprehensive
+- unspecific names of the variables (`for a in ...`)
+- (+) docstrings included ...
+- ... but too short, not really meaningful
+
+## `code_to_review3.R`
+
+- (+) description of the general idea of the script
+- undocumented function
+- messed up local and global variables
+- magic numbers (`population_within_10_km+0.1`, `shape = 16`, `fill = "#2b272e"` etc.)
+- (+) long and meaningful variables names
+- constants (`col_palette`) not separetd from the rest of code
+- complicated nested fucntion calls `plot.list <- lapply(...`
+- long lines
+- inconsistent use of aggignement operators (`<-` and `=`)
+- repeated lines (possible to wrap into functions)
