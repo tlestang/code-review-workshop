@@ -71,21 +71,23 @@ List of discrete practices to illustrate in snippets:
 - Some variable could use more descriptive names (e.g. `doo`)
 
 
-## `code_to_review1.py`
+## `code_to_review1.py` - runs
 
 - undocumented, or not properly documented functions
 - lack of descriptiod of expected input / output, returns
-- non-significant naming of the functions
+- non-significant naming of the functions (mention PEP8, but also that it's okay to work out a lab's convention)
 - unused functions
 - commented out code
 - messed up local and global variables
 - (+) comments in critical places of the code
 - (+) assertion checks for types of critical variables
+- but suggest using try/except block instead (assert statements in non-test code should have a very limited use)
+- print statements should be limited, rather `logging` module for debugging (i.e. line 46)
 - testing not in `if __name__` block (or a separate scirpt)
 - (+) test cases included
 - function imports all over the place
 
-## `code_to_review2.py`
+## `code_to_review2.py` - runs
 
 - (+) logical use of the object orented structure
 - testing not in `if __name__` block (or a separate scirpt)
@@ -95,20 +97,22 @@ List of discrete practices to illustrate in snippets:
 - is making `Analysis` class abstract the best choice? Now programmer
 needs to create a separate class for every analysis, maybe better
 to keep them as objects and define generic method?
+- `Analysis.complete` boolean could be set internally in run?
 - tests not comprehensive
 - unspecific names of the variables (`for a in ...`)
 - (+) docstrings included ...
 - ... but too short, not really meaningful
 
-## `code_to_review3.R`
+## `code_to_review3.R` - runs
 
 - (+) description of the general idea of the script
 - undocumented function
 - messed up local and global variables
-- magic numbers (`population_within_10_km+0.1`, `shape = 16`, `fill = "#2b272e"` etc.)
+- magic numbers / values (`population_within_10_km+0.1`, `shape = 16`, `fill = "#2b272e"` etc.)
 - (+) long and meaningful variables names
-- constants (`col_palette`) not separetd from the rest of code
+- constants (`col_palette`) not separetd from the rest of code (capital letters)
 - complicated nested fucntion calls `plot.list <- lapply(...`
 - long lines
+- complicated ggplot call (possible to break it down)
 - inconsistent use of aggignement operators (`<-` and `=`)
 - repeated lines (possible to wrap into functions)

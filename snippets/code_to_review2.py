@@ -2,7 +2,7 @@ import os
 from abc import abstractmethod
 import numpy as np
 
-class Analysis(object):
+class Analysis():
     '''
     Analysis object that performs some operation on your *data*
     after calling *main* method.
@@ -57,15 +57,14 @@ class Report(object):
         for a in self.analyses:
             if only_completed and a.check_if_completed():
                 print(a)
-            else:
-                print(a)
-
+                continue
+            print(a)
 
 # example of how to use Analysis and Report
 ac = AnalysisCounter('counter', 'This counts number of occurences in a vector')
 ac.load_data(np.array([1,4,1,3,5,6,7,3]))
-ac.set_complete(True)
 ac.run()
+ac.set_complete(True)
 
 report = Report('my final report')
 report.add_analysis(ac)

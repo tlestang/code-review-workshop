@@ -13,6 +13,8 @@ processed_volcano <- volcano %>%
   mutate(logpop10 = log10(population_within_10_km+0.1)) %>%
   select(primary_volcano_type, pop=logpop10, longitude, latitude)
 
+# cleaning data a bit as there are some plural versions of volcano names
+# that mean essentially the same
 processed_volcano$primary_volcano_type <-
   recode(processed_volcano$primary_volcano_type, Stratovolcano="Stratovolcano(es)")
 
@@ -23,6 +25,7 @@ volcano_types <- processed_volcano %>% group_by(primary_volcano_type) %>%
   summarise(count = n()) %>%
   arrange(desc(count)) %>% head(8)
 
+# NA types become Other as we want to include them in the analysis
 processed_volcano$primary_volcano_type <- processed_volcano$primary_volcano_type %>%
   replace_na("Other")
 
