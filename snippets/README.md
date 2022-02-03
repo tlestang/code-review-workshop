@@ -71,7 +71,7 @@ List of discrete practices to illustrate in snippets:
 - Some variable could use more descriptive names (e.g. `doo`)
 
 
-## `code_to_review1.py` - runs
+## `linear_regression.py` - runs
 
 - undocumented, or not properly documented functions
 - lack of descriptiod of expected input / output, returns
@@ -87,7 +87,7 @@ List of discrete practices to illustrate in snippets:
 - (+) test cases included
 - function imports all over the place
 
-## `code_to_review2.py` - runs
+## `reporting_script.py` - runs
 
 - (+) logical use of the object orented structure
 - testing not in `if __name__` block (or a separate scirpt)
@@ -103,7 +103,7 @@ to keep them as objects and define generic method?
 - (+) docstrings included ...
 - ... but too short, not really meaningful
 
-## `code_to_review3.R` - runs
+## `volcano_analysis.R` - runs
 
 - (+) description of the general idea of the script
 - undocumented function
@@ -116,3 +116,18 @@ to keep them as objects and define generic method?
 - complicated ggplot call (possible to break it down)
 - inconsistent use of aggignement operators (`<-` and `=`)
 - repeated lines (possible to wrap into functions)
+- suggest separating cleaning data and plotting to two separate scripts (or at least making secitons in comments)
+
+## `pca_functions.R` - runs
+
+- (+) good documentation
+- (+) code is rather clear and logically separated into separate functions
+- (+) function names are clear and follow HW style-guide
+- some variables could be better named (`nc`)
+- although some returns could be more elaborated on
+- testing could be done separately (or moved to the testing function) - not commented
+- messed up local and global variables
+- imports (`ggplot2`) should be moved to the top of the script (unless it's a package, then to DESCRIPTION and `@import` statement should be used)
+- in fact `plot_scree` in the current format wouldn't work without importing `ggplot2` (as not only `qplot`, but also `geom_line`, etc. come from the package)
+- (optional) `get_total_explained_variance` could be one-liner
+- inconsisted use of `return`, R by default returns whatever is in the last line of the function

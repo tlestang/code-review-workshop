@@ -2,7 +2,7 @@ import os
 from abc import abstractmethod
 import numpy as np
 
-class Analysis():
+class Analysis:
     '''
     Analysis object that performs some operation on your *data*
     after calling *main* method.
@@ -41,7 +41,7 @@ class AnalysisCounter(Analysis):
         from collections import Counter
         self.results = Counter(self.data)
 
-class Report(object):
+class Report:
     '''
     Report collects and prints out the results of all analyses.
     '''

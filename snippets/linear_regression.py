@@ -5,7 +5,7 @@ def compCostFunction(estim_y, true_y):
     C = (1 / 2 * m) * np.sum(E ** 2)
     return C
 
-def myFunction(x, y):
+def test_dimensions(x, y):
     # this checks whether the x and y have the same number of samples
     assert isinstance(x, np.ndarray), "Only works for arrays"
     assert isinstance(y, np.ndarray), "Only works for arrays"
