@@ -21,38 +21,49 @@
   - Many to one
   - Many to many
   - ...
-- Code reviews are performed throughout a project, on small changes,
+- The term "code review" can be confusing for people in academia.
+  Code reviews are performed throughout a project, on small changes,
   as opposed to larger end-of-work reviews.
 - The concept of code review is vague but all in all is about spending
   some time studying and reviewing somebody else's code and discussing
-  your code with someone else.
+  your code with someone else. It's an investement of time and energy
+  but you can get a lot out of it.
 ** Returns on investement
 - Improved code quality.
   + Readability is difficult to self-assess. How can you tell if your
-    code is readable?
-  + Feedback on design decisions. Particularly important if you are
-    writing a library.
-  + Catch sight of gotchas: performance, language idioms, design
-    flaws, corner cases. "Second pair of eyes effect".
-  Code reviews are excellent at assessing readability. Few researchers
-  submit a paper or grant proposal without several rounds of feedback
-  by colleagues. Should code be different? If you think that no one will
-  read your code or reuse it, think again.
+    code is readable? Code reviews are excellent at assessing
+    readability. Few researchers submit a paper or grant proposal
+    without several rounds of feedback by colleagues. Should code be
+    different? If you think that no one will read your code or reuse
+    it, think again.
+  + Check for code consistency if contributing to a common codebase.
+  + +Feedback on design decisions. Particularly important if you are+
+    +writing a library.+
+  + More generally, CR gives access to second pair of eyes. Catch sight
+    of gotchas: performance, language idioms, design flaws, corner
+    cases. "Second pair of eyes effect".
 - Learning and knowledge transfer.
-  + Mentoring and disseminiation of best practices from more
-    experienced to less experienced.
-  + Even two researchers with similar programming experience can learn
-    a lot from comparing their different approaches.
+  + If you are new to a group, or new to programming, you often get a
+    lot from a code review. Mentoring and disseminiation of best
+    practices from more experienced to less experienced.
+  + Keeps you on your toes. New patterns, solutions. Even two
+    researchers with similar programming experience can learn a lot
+    from comparing their different approaches.
   + Less experienced researchers are valuable reviewers. They are an
     excellent benchmark of readability and are rewarded with mentored
     exposure to more advanced practices.
   Regular code reviews within a resaerch group can quickly level the
   group up and raise less experienced member's condifence.
-- Collaboration
+- Collaboration (other sideof the same coin)
   + Regular code reviews means regular interactions and discussions
     between members of a research team or community. This reinforce
     group awareness, trust and cohesion. Beyond productivity as a
     group, it makes work nicer.
+  + Ongoing challenge with software sustainability because developers
+    only contribute a few cyears. Situation where facing cryptic code
+    but the person who wrote it left long ago. Solution to increase
+    length of contracts, but code review can help spreading knowledge
+    of code.
   + Opportunities to "talk code", instead of focusing on the
     science. Experimentalists discuss their tools all the time,
     research software developers can talk about theirs too. This in
@@ -158,10 +169,16 @@
 :REVEAL_THEME: white
 :END:
 ** Code +Review+ Discussion
+#+begin_notes
+- Discussion over a piece of code. Typically between the author and a
+  reviewer who provides feedback on code quality and/or functionality.
+- Code review is common in the software industry and open
+  source communities.
+#+end_notes
 #+ATTR_HTML: :width 60%
 [[./alvaro-reyes-fSWOVc3e06w-unsplash.jpg]]
-** CR is common practice
-Illustrate that CR is common among software developpers
+# ** CR is common practice
+# Illustrate that CR is common among software developpers
 ** Code Review has many forms
 - Live discussion
 - Asynchronous discussion
@@ -169,6 +186,13 @@ Illustrate that CR is common among software developpers
 - Many to one
 - One to many
 ** Not an academic peer review
+#+begin_notes
+- The term "code review" can be confusing for people in academia.
+- Code reviews are performed throughout a project, on small changes,
+  as opposed to larger end-of-work reviews.
+- all in all is about spending some time studying and reviewing
+  code. High-returns investement.
+#+end_notes
 #+ATTR_REVEAL: :frag (none none none appear appear) :frag_idx (- - - 1 1)
 - Not anonymous
 - Informal
@@ -177,6 +201,13 @@ Illustrate that CR is common among software developpers
 - Regular
 
 ** High rewards
+:PROPERTIES:
+:reveal_background: #228B22
+:END:
+#+begin_notes
+  At the end of the day code review benefits both individuals and a team's
+  productivity and wellbeing.
+#+end_notes
 - Code quality
 - Knowledge transfer, mentoring
 - Team awareness, common ownership
@@ -185,56 +216,106 @@ Illustrate that CR is common among software developpers
 #+ATTR_REVEAL: :frag grow
 Small investement, big returns.
 ** Is your code readable?
+#+begin_notes
+- Code reviews are excellent at assessing readability. How can you
+  tell if your code is readable?
+- Few researchers submit a paper or grant proposal without several
+  rounds of feedback by colleagues.
+- If you write collaboratively, code review can help everyone
+  contribute code that is consistent with one another. Consistent in
+  function names, module orga or errors/exception handling.
+#+end_notes
 #+CAPTION: The Turing Way project illustration by Scriberia. Used under a CC-BY 4.0 licence. DOI: 10.5281/zenodo.3332807.
 #+ATTR_HTML: :width 60%
 [[./readable-code.jpg]]
-** Like spaghettis?
-#+ATTR_HTML: :width 70%
-[[./spaghetti.png]]
+# ** Like spaghettis?
+# :PROPERTIES:
+# :reveal_background: ./spaghetti.png
+# :END:x
+
 ** A "second pair of eyes"
-#+CAPTION: To be fair, I still don't see anything wrong with this new invention. Let's hope it lasts...
+#+begin_notes
+- Sometimes you need someone else to see clearly.
+- Proofreading a paper for the 5th time
+- Code review gives you that second pair of eyes, tocatch perfromace
+  gotchas, language idioms.
+- Mere action of explaining your code to somebody gives you a new perspective.
+#+end_notes
+#+CAPTION: "To be fair, I am still to find something wrong with this new invention. Let's hope it lasts..."
 #+ATTR_HTML: :width 60%
 [[./gaston.png]]
-** Learning and knowledge transfer
-#+ATTR_HTML: :width 60%
-[[./neonbrand-y_6rqStQBYQ-unsplash.jpg]]
-** More collaboration
-#+CAPTION: Photo by Nick Fewings on Unsplash
-#+ATTR_HTML: :width 30%
-[[./nick-fewings-ORSkFfgfEBI-unsplash.jpg]]
+** knowledge transfer
 
-** Why aren't you doing code review already?
-- You don't about it (enough)
-- You don't have time
-- You don't know who to do it with
-- You don't care about your code
-- You wouldn't know what to look for as a reviewer
-- You tried it once but it didn't feel very productive.
+#+ATTR_HTML: :width 70%
+[[./nesa-by-makers-IgUR1iX0mqM-unsplash.jpg]]
+#+begin_notes
+- Mentoring and disseminiation of best practices from more experienced
+  to less experienced. Great for newbies / great for PIs and senior
+  pppl
+- Keeps you on your toes, see different solutions. Level the group up, raise confidence.
+- Beginners should review as well.
+#+end_notes
+** Collaboration
+:PROPERTIES:
+:reveal_background: ./nick-fewings-ORSkFfgfEBI-unsplash.jpg
+:END:
+
+#+begin_notes
+- Code review -> regular interactions/discussions. Strengthen group
+  awareness, trust, cohension.
+- Helps productivity but also makes your world nicer.
+- People being aware of each other also has practical consequence: bus factor.
+#+end_notes
+# ** Why aren't you doing code review already?
+# - You don't about it (enough)
+# - You don't have time
+# - You don't know who to do it with
+# - You don't care about your code
+# - You wouldn't know what to look for as a reviewer
+# - You tried it once but it didn't feel very productive.
 ** Small but frequent code reviews
+:PROPERTIES:
+:reveal_background: #B22222
+:END:
 - reviewing demands strong focus
 - Big code reviews are daunting.
 - Short meetings fit better in a busy schedule
-** Make sure beginners also review
-#+ATTR_REVEAL: :frag (none roll-in roll-in) :frag_idx (- 1 2)
-- If a beginner Python programmer understands my code, it is readable.
-- "Naive" point of views are valuable (expert blindspot).
-- Beginners won't stay beginners for long.
+# ** Make sure beginners also review
+# #+ATTR_REVEAL: :frag (none roll-in roll-in) :frag_idx (- 1 2)
+# - If a beginner Python programmer understands my code, it is readable.
+# - "Naive" point of views are valuable (expert blindspot).
+# - Beginners won't stay beginners for long.
 
 ** Prefer live discussion
-#+ATTR_HTML: :width 60%
-[[./nesa-by-makers-IgUR1iX0mqM-unsplash.jpg]]
-** Set the review up for success
-Authors can make the review much easier by:
-- Identifying a small, coherent chunk of code (< 200 lines)
-- Providing context
-- Making sure the code is tidy ([[https://github.com/psf/black#readme][Black]], [[https://github.com/r-lib/styler#readme][styler]])
-- Providing unit tests
+#+ATTR_HTML: :width 70%
+[[./pexels-christina-morillo-1181469.jpg]]
+
+#+begin_notes
+- Easier to understand soneone else's mindet, put in their shoes.
+- Also limited in time, don't have to wait fro someone to reply.
+- Not always possible, use tools like GitLab or GitHub.
+#+end_notes
+
+
+** The author's part
+- Isolate small, coherent chunk of code (< 200 lines)
+- Provide context
+- Tidy code ([[https://github.com/psf/black#readme][Black]], [[https://github.com/r-lib/styler#readme][styler]])
 ** 
 [[./bad_PR.png]]
 
 [[./bad_commits.png]]
 
 ** Start with a discussion
+#+begin_notes
+- If you don't know the other person, or start new CR process, have a chat w them.
+- Make the most of the discussion if you understand the person's
+  mindet/expectation. You can adapt your communication. Good to have a
+  goeal in mind. Readability is often a good choice.
+- Goal will depend on how familiar the reviewer is with the code.
+- Collaborative dev: have some ground guidelines for review. Make sure
+  that everybody agrees with priorities.
+#+end_notes
 Make sure you clarify
 - Expectations
 - Mindsets
@@ -246,6 +327,9 @@ Agree on what to focus on
 ** Perspectives often differ
 [[./boat-land.jpg]]
 ** Review the code, not its author(s)
+:PROPERTIES:
+:reveal_background: #CD5C5C
+:END:
 #+ATTR_REVEAL: :frag (appear appear appear appear appear) :frag_idx (1 2 3 4 5)
 - "Whoever named this function can't code".
 - "You named this function badly".
