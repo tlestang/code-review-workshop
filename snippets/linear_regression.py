@@ -28,25 +28,25 @@ def iterativeLinearRegression(X, y, alpha=0.01):
     X = np.concatenate((np.ones((m, 1)), X), axis=1)
 
     W = np.random.randn(n + 1, )
- 
+
     # stores the updates on the cost function
     cost_history = []
     # iterate until the maximum number of steps
     for i in np.arange(steps):  # begin the process
- 
+
         y_estimated = X.dot(W)
- 
+
         cost = compCostFunction(y_estimated, y)
         # Update gradient descent
         E = y_estimated - y
         gradient = (1 / m) * X.T.dot(E)
- 
+
         W = W - alpha * gradient
         if i % 10 == 0:
             print(f"step: {i}\tcost: {cost}")
- 
+
         cost_history.append(cost)
- 
+
     return W, cost_history
 
 params, history = iterativeLinearRegression(X, y)
