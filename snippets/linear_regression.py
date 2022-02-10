@@ -15,7 +15,7 @@ def test_dimensions(x, y):
 # feature_1 = np.linspace(0, 2, num=100)
 
 X = np.random.randn(100,3)  # feature matrix
-y = 1 + np.dot(X, [3.5, 4., -4])  # target vector
+y = 1 + X @ [3.5, 4., -4]  # target vector
 
 m = np.shape(X)[0]  # nr of samples
 n = np.shape(X)[1]  # nr of features
@@ -34,12 +34,12 @@ def iterativeLinearRegression(X, y, nr_of_samples, alpha=0.01):
     # iterate until the maximum number of steps
     for i in np.arange(steps):  # begin the process
 
-        y_estimated = X.dot(W)
+        y_estimated = X @ W
 
         cost = compCostFunction(y_estimated, y, nr_of_samples)
         # Update gradient descent
         E = y_estimated - y
-        gradient = (1 / nr_of_samples) * X.T.dot(E)
+        gradient = (1 / nr_of_samples) * X.T @ E
 
         W = W - alpha * gradient
         if i % 10 == 0:
@@ -63,7 +63,7 @@ plt.show()
 # test 2
 
 X = np.random.randn(500,2)  # feature matrix
-y = np.dot(X, [5, -1])  # target vector
+y = X @ [5, -1]  # target vector
 
 m = np.shape(X)[0]  # nr of samples
 n = np.shape(X)[1]  # nr of features
