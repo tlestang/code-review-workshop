@@ -1,0 +1,58 @@
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(maps)
+library(patchwork)
+
+#' This is script with analysis of volcanos for my
+#' geological article.
+
+volcano <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv')
+
+processed_volcano <- volcano %>%
+  mutate(logpop10 = log10(population_within_10_km+0.1)) %>%
+  select(primary_volcano_type, pop=logpop10, longitude, latitude)
+
+# cleaning data a bit as there are some plural versions of volcano names
+# that mean essentially the same
+processed_volcano$primary_volcano_type <-
+  recode(processed_volcano$primary_volcano_type, Stratovolcano="Stratovolcano(es)")
+
+processed_volcano$primary_volcano_type <-
+  recode(processed_volcano$primary_volcano_type, `Shield(s)`="Shield")
+
+volcano_types <- processed_volcano %>% group_by(primary_volcano_type) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>% head(8)
+
+# NA types become Other as we want to include them in the analysis
+processed_volcano$primary_volcano_type <- processed_volcano$primary_volcano_type %>%
+  replace_na("Other")
+
+sc_max <- max(processed_volcano$pop)
+sc_min <- min(processed_volcano$pop)
+
+col_palette = c("#d11141", "#00b159", "#00aedb", "#f37735", "#ffc425",
+                 "#3aefaf", "#0b57dd", "#f666b7", "#cf1833", "#a35c0a",
+                 "#bc0bfe", "#61ff41", "#eabf72", "#09dbc3", "#ffffff")
+
+do_map = function(vulc_type, colid = NULL) {
+  dotcol <- ifelse(is.null(colid), "#fdff00", col_palette[colid])
+  processed_volcano %>%
+    filter(primary_volcano_type == vulc_type) %>%
+    ggplot(aes(longitude, latitude, size = pop)) +
+    borders(colour = "#396067", fill = "#383949") +
+    geom_point(shape = 16, colour = dotcol, fill = "#ff5800", alpha = 0.6) +
+    scale_radius(range = c(1, 8), limits = c(sc_min, sc_max)) +
+    theme(legend.position = "none",
+          plot.background = element_rect(fill = "#2b272e"),
+          plot.title = element_text(color = "white", size = 12, face = "bold")) +
+    ggtitle(paste("Volcano type: ", vulc_type))
+}
+
+
+plot.list <- lapply(seq(1, length(volcano_types$primary_volcano_type)),
+                    function(i) do_map(volcano_types$primary_volcano_type[i], i))
+
+plt <- wrap_plots(plot.list, nrow = 2)
+ggsave("plot.pdf", plot = plt)
