@@ -29,7 +29,7 @@ List of discrete practices to illustrate in snippets:
   
 
 # Snippets
-## `apply_vaccine.R`
+## `apply_vaccine.py`
 ### Docstrings and comments
 - No docstrings. Questionable if `lookup_vaccine_name` needs one, but
   `apply_vaccine_to_population` is complex and takes three different parameters.
