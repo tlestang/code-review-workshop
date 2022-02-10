@@ -1,8 +1,8 @@
 import numpy as np
 
-def compCostFunction(estim_y, true_y):
+def compCostFunction(estim_y, true_y, nr_of_samples):
     E = estim_y - true_y
-    C = (1 / 2 * m) * np.sum(E ** 2)
+    C = (1 / 2 * nr_of_samples) * np.sum(E ** 2)
     return C
 
 def test_dimensions(x, y):
@@ -20,12 +20,12 @@ y = 1 + np.dot(X, [3.5, 4., -4])  # target vector
 m = np.shape(X)[0]  # nr of samples
 n = np.shape(X)[1]  # nr of features
 
-def iterativeLinearRegression(X, y, alpha=0.01):
+def iterativeLinearRegression(X, y, nr_of_samples, alpha=0.01):
     """
     This makes iterative LR via gradient descent and returns estimated parameters and history list.
     """
     steps=500
-    X = np.concatenate((np.ones((m, 1)), X), axis=1)
+    X = np.concatenate((np.ones((nr_of_samples, 1)), X), axis=1)
 
     W = np.random.randn(n + 1, )
 
@@ -36,10 +36,10 @@ def iterativeLinearRegression(X, y, alpha=0.01):
 
         y_estimated = X.dot(W)
 
-        cost = compCostFunction(y_estimated, y)
+        cost = compCostFunction(y_estimated, y, nr_of_samples)
         # Update gradient descent
         E = y_estimated - y
-        gradient = (1 / m) * X.T.dot(E)
+        gradient = (1 / nr_of_samples) * X.T.dot(E)
 
         W = W - alpha * gradient
         if i % 10 == 0:
@@ -49,7 +49,7 @@ def iterativeLinearRegression(X, y, alpha=0.01):
 
     return W, cost_history
 
-params, history = iterativeLinearRegression(X, y)
+params, history = iterativeLinearRegression(X, y, m)
 
 # test 1
 print(params)
@@ -68,7 +68,7 @@ y = np.dot(X, [5, -1])  # target vector
 m = np.shape(X)[0]  # nr of samples
 n = np.shape(X)[1]  # nr of features
 
-params, history = iterativeLinearRegression(X, y)
+params, history = iterativeLinearRegression(X, y, m)
 print(params)
 
 import matplotlib.pyplot as plt
