@@ -1,5 +1,6 @@
 #+REVEAL_THEME: white
-#+OPTIONS: toc:nil  num:nil
+#+DATE:
+#+OPTIONS: toc:nil num:nil reveal_title_slide:nil
 * Notes
 ** Code Review
 - Discussion over a piece of code. Typically between the author and a
@@ -164,7 +165,7 @@
     codebase, agree on a series of meetings.
 - Engage in code reviews on a weekly basis. Make it part of your and
   your group's routine.
-* Slides
+* Introduction to code review
 :PROPERTIES:
 :REVEAL_THEME: white
 :END:
